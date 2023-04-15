@@ -1,18 +1,19 @@
-// @mui
-import PropTypes from 'prop-types';
 import { Box, Card, Paper, Typography, CardHeader, CardContent } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
 
-// ----------------------------------------------------------------------
+interface AppTrafficBySiteProps {
+  title?: string
+  subheader?: string
+  list: unknown[]
+}
 
-AppTrafficBySite.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  list: PropTypes.array.isRequired,
-};
-
-export default function AppTrafficBySite({ title, subheader, list, ...other }) {
+export default function AppTrafficBySite({
+  title,
+  subheader,
+  list,
+  ...other
+}: AppTrafficBySiteProps) {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />

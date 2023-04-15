@@ -1,5 +1,3 @@
-// @mui
-import PropTypes from 'prop-types';
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 // utils
@@ -20,17 +18,22 @@ const StyledIcon = styled('div')(({ theme }) => ({
   marginBottom: theme.spacing(3),
 }));
 
-// ----------------------------------------------------------------------
+interface AppWidgetSummaryProps {
+  color?: string
+  icon?: string
+  title: string
+  total: number
+  sx?: object
+}
 
-AppWidgetSummary.propTypes = {
-  color: PropTypes.string,
-  icon: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  total: PropTypes.number.isRequired,
-  sx: PropTypes.object,
-};
-
-export default function AppWidgetSummary({ title, total, icon, color = 'primary', sx, ...other }) {
+export default function AppWidgetSummary({
+  title,
+  total,
+  icon,
+  color = 'primary',
+  sx,
+  ...other
+}: AppWidgetSummaryProps) {
   return (
     <Card
       sx={{

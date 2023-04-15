@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { Box, Card, Link, Typography, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -18,13 +17,13 @@ const StyledProductImg = styled('img')({
   position: 'absolute',
 });
 
-// ----------------------------------------------------------------------
+interface ShopProductCardProps {
+  product?: object
+}
 
-ShopProductCard.propTypes = {
-  product: PropTypes.object,
-};
-
-export default function ShopProductCard({ product }) {
+export default function ShopProductCard({
+  product
+}: ShopProductCardProps) {
   const { name, cover, price, colors, status, priceSale } = product;
 
   return (

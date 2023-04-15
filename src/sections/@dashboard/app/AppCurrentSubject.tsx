@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import ReactApexChart from 'react-apexcharts';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -30,17 +29,22 @@ const StyledChartWrapper = styled('div')(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
+interface AppCurrentSubjectProps {
+  title?: string
+  subheader?: string
+  chartData: unknown[]
+  chartColors: string[]
+  chartLabels: string[]
+}
 
-AppCurrentSubject.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  chartData: PropTypes.array.isRequired,
-  chartColors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  chartLabels: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-export default function AppCurrentSubject({ title, subheader, chartData, chartColors, chartLabels, ...other }) {
+export default function AppCurrentSubject({
+  title,
+  subheader,
+  chartData,
+  chartColors,
+  chartLabels,
+  ...other
+}: AppCurrentSubjectProps) {
   const chartOptions = useChart({
     stroke: { width: 2 },
     fill: { opacity: 0.48 },

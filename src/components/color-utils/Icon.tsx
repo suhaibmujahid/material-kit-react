@@ -1,19 +1,21 @@
-import PropTypes from 'prop-types';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box } from '@mui/material';
 //
 import Iconify from '../iconify';
 
-// ----------------------------------------------------------------------
+interface IconProps {
+  sx?: object
+  checked?: boolean
+  whiteColor?: boolean
+}
 
-Icon.propTypes = {
-  sx: PropTypes.object,
-  checked: PropTypes.bool,
-  whiteColor: PropTypes.bool,
-};
-
-export default function Icon({ checked, whiteColor, sx, ...other }) {
+export default function Icon({
+  checked,
+  whiteColor,
+  sx,
+  ...other
+}: IconProps) {
   const shadow = (
     <Box
       sx={{

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { styled, alpha } from '@mui/material/styles';
 import { Toolbar, Tooltip, IconButton, Typography, OutlinedInput, InputAdornment } from '@mui/material';
@@ -30,15 +29,17 @@ const StyledSearch = styled(OutlinedInput)(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
+interface UserListToolbarProps {
+  numSelected?: number
+  filterName?: string
+  onFilterName?(...args: unknown[]): unknown
+}
 
-UserListToolbar.propTypes = {
-  numSelected: PropTypes.number,
-  filterName: PropTypes.string,
-  onFilterName: PropTypes.func,
-};
-
-export default function UserListToolbar({ numSelected, filterName, onFilterName }) {
+export default function UserListToolbar({
+  numSelected,
+  filterName,
+  onFilterName
+}: UserListToolbarProps) {
   return (
     <StyledRoot
       sx={{

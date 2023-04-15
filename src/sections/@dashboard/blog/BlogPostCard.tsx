@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
 import { Box, Link, Card, Grid, Avatar, Typography, CardContent } from '@mui/material';
@@ -49,14 +48,15 @@ const StyledCover = styled('img')({
   position: 'absolute',
 });
 
-// ----------------------------------------------------------------------
+interface BlogPostCardProps {
+  post: object
+  index?: number
+}
 
-BlogPostCard.propTypes = {
-  post: PropTypes.object.isRequired,
-  index: PropTypes.number,
-};
-
-export default function BlogPostCard({ post, index }) {
+export default function BlogPostCard({
+  post,
+  index
+}: BlogPostCardProps) {
   const { cover, title, view, comment, share, author, createdAt } = post;
   const latestPostLarge = index === 0;
   const latestPost = index === 1 || index === 2;

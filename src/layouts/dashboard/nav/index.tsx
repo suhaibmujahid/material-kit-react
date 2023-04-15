@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 // @mui
@@ -27,14 +26,15 @@ const StyledAccount = styled('div')(({ theme }) => ({
   backgroundColor: alpha(theme.palette.grey[500], 0.12),
 }));
 
-// ----------------------------------------------------------------------
+interface NavProps {
+  openNav?: boolean
+  onCloseNav?(...args: unknown[]): unknown
+}
 
-Nav.propTypes = {
-  openNav: PropTypes.bool,
-  onCloseNav: PropTypes.func,
-};
-
-export default function Nav({ openNav, onCloseNav }) {
+export default function Nav({
+  openNav,
+  onCloseNav
+}: NavProps) {
   const { pathname } = useLocation();
 
   const isDesktop = useResponsive('up', 'lg');

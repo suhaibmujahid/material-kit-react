@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { set, sub } from 'date-fns';
 import { noCase } from 'change-case';
 import { faker } from '@faker-js/faker';
@@ -181,21 +180,21 @@ export default function NotificationsPopover() {
   );
 }
 
-// ----------------------------------------------------------------------
+interface NotificationItemProps {
+  notification?: {
+    createdAt?: Date
+    id?: string
+    isUnRead?: boolean
+    title?: string
+    description?: string
+    type?: string
+    avatar?: any
+  }
+}
 
-NotificationItem.propTypes = {
-  notification: PropTypes.shape({
-    createdAt: PropTypes.instanceOf(Date),
-    id: PropTypes.string,
-    isUnRead: PropTypes.bool,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    type: PropTypes.string,
-    avatar: PropTypes.any,
-  }),
-};
-
-function NotificationItem({ notification }) {
+function NotificationItem({
+  notification
+}: NotificationItemProps) {
   const { avatar, title } = renderContent(notification);
 
   return (

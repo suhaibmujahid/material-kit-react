@@ -1,20 +1,23 @@
-import PropTypes from 'prop-types';
 import ReactApexChart from 'react-apexcharts';
 // @mui
 import { Card, CardHeader, Box } from '@mui/material';
 // components
 import { useChart } from '../../../components/chart';
 
-// ----------------------------------------------------------------------
+interface AppWebsiteVisitsProps {
+  title?: string
+  subheader?: string
+  chartData: unknown[]
+  chartLabels: string[]
+}
 
-AppWebsiteVisits.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  chartData: PropTypes.array.isRequired,
-  chartLabels: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-export default function AppWebsiteVisits({ title, subheader, chartLabels, chartData, ...other }) {
+export default function AppWebsiteVisits({
+  title,
+  subheader,
+  chartLabels,
+  chartData,
+  ...other
+}: AppWebsiteVisitsProps) {
   const chartOptions = useChart({
     plotOptions: { bar: { columnWidth: '16%' } },
     fill: { type: chartData.map((i) => i.fill) },

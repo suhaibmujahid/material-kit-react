@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
 import { NavLink as RouterLink } from 'react-router-dom';
 // @mui
 import { Box, List, ListItemText } from '@mui/material';
 //
 import { StyledNavItem, StyledNavItemIcon } from './styles';
 
-// ----------------------------------------------------------------------
+interface NavSectionProps {
+  data?: unknown[]
+}
 
-NavSection.propTypes = {
-  data: PropTypes.array,
-};
-
-export default function NavSection({ data = [], ...other }) {
+export default function NavSection({
+  data = [],
+  ...other
+}: NavSectionProps) {
   return (
     <Box {...other}>
       <List disablePadding sx={{ p: 1 }}>
@@ -23,13 +23,13 @@ export default function NavSection({ data = [], ...other }) {
   );
 }
 
-// ----------------------------------------------------------------------
+interface NavItemProps {
+  item?: object
+}
 
-NavItem.propTypes = {
-  item: PropTypes.object,
-};
-
-function NavItem({ item }) {
+function NavItem({
+  item
+}: NavItemProps) {
   const { title, path, icon, info } = item;
 
   return (

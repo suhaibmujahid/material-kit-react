@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 // @mui
 import { CssBaseline } from '@mui/material';
@@ -11,13 +10,13 @@ import GlobalStyles from './globalStyles';
 import customShadows from './customShadows';
 import componentsOverride from './overrides';
 
-// ----------------------------------------------------------------------
+interface ThemeProviderProps {
+  children?: React.ReactNode
+}
 
-ThemeProvider.propTypes = {
-  children: PropTypes.node,
-};
-
-export default function ThemeProvider({ children }) {
+export default function ThemeProvider({
+  children
+}: ThemeProviderProps) {
   const themeOptions = useMemo(
     () => ({
       palette,

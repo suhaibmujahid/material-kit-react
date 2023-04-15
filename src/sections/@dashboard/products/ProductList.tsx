@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
 // @mui
 import { Grid } from '@mui/material';
 import ShopProductCard from './ProductCard';
 
-// ----------------------------------------------------------------------
+interface ProductListProps {
+  products: unknown[]
+}
 
-ProductList.propTypes = {
-  products: PropTypes.array.isRequired,
-};
-
-export default function ProductList({ products, ...other }) {
+export default function ProductList({
+  products,
+  ...other
+}: ProductListProps) {
   return (
     <Grid container spacing={3} {...other}>
       {products.map((product) => (

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
@@ -38,14 +37,5 @@ const Label = forwardRef(({ children, color = 'default', variant = 'soft', start
     </StyledLabel>
   );
 });
-
-Label.propTypes = {
-  sx: PropTypes.object,
-  endIcon: PropTypes.node,
-  children: PropTypes.node,
-  startIcon: PropTypes.node,
-  variant: PropTypes.oneOf(['filled', 'outlined', 'ghost', 'soft']),
-  color: PropTypes.oneOf(['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error']),
-};
 
 export default Label;

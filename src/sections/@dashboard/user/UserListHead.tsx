@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import { Box, Checkbox, TableRow, TableCell, TableHead, TableSortLabel } from '@mui/material';
 
@@ -16,15 +15,15 @@ const visuallyHidden = {
   clip: 'rect(0 0 0 0)',
 };
 
-UserListHead.propTypes = {
-  order: PropTypes.oneOf(['asc', 'desc']),
-  orderBy: PropTypes.string,
-  rowCount: PropTypes.number,
-  headLabel: PropTypes.array,
-  numSelected: PropTypes.number,
-  onRequestSort: PropTypes.func,
-  onSelectAllClick: PropTypes.func,
-};
+interface UserListHeadProps {
+  order?: "asc" | "desc"
+  orderBy?: string
+  rowCount?: number
+  headLabel?: unknown[]
+  numSelected?: number
+  onRequestSort?(...args: unknown[]): unknown
+  onSelectAllClick?(...args: unknown[]): unknown
+}
 
 export default function UserListHead({
   order,
@@ -33,8 +32,8 @@ export default function UserListHead({
   headLabel,
   numSelected,
   onRequestSort,
-  onSelectAllClick,
-}) {
+  onSelectAllClick
+}: UserListHeadProps) {
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };

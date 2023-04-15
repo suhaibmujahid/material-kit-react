@@ -1,5 +1,3 @@
-// @mui
-import PropTypes from 'prop-types';
 import { Box, Stack, Link, Card, Button, Divider, Typography, CardHeader } from '@mui/material';
 // utils
 import { fToNow } from '../../../utils/formatTime';
@@ -7,15 +5,18 @@ import { fToNow } from '../../../utils/formatTime';
 import Iconify from '../../../components/iconify';
 import Scrollbar from '../../../components/scrollbar';
 
-// ----------------------------------------------------------------------
+interface AppNewsUpdateProps {
+  title?: string
+  subheader?: string
+  list: unknown[]
+}
 
-AppNewsUpdate.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  list: PropTypes.array.isRequired,
-};
-
-export default function AppNewsUpdate({ title, subheader, list, ...other }) {
+export default function AppNewsUpdate({
+  title,
+  subheader,
+  list,
+  ...other
+}: AppNewsUpdateProps) {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -39,18 +40,18 @@ export default function AppNewsUpdate({ title, subheader, list, ...other }) {
   );
 }
 
-// ----------------------------------------------------------------------
+interface NewsItemProps {
+  news?: {
+    description?: string
+    image?: string
+    postedAt?: Date
+    title?: string
+  }
+}
 
-NewsItem.propTypes = {
-  news: PropTypes.shape({
-    description: PropTypes.string,
-    image: PropTypes.string,
-    postedAt: PropTypes.instanceOf(Date),
-    title: PropTypes.string,
-  }),
-};
-
-function NewsItem({ news }) {
+function NewsItem({
+  news
+}: NewsItemProps) {
   const { image, title, description, postedAt } = news;
 
   return (

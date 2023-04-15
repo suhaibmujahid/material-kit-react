@@ -1,19 +1,20 @@
-// @mui
-import PropTypes from 'prop-types';
 import { Card, Typography, CardHeader, CardContent } from '@mui/material';
 import { Timeline, TimelineDot, TimelineItem, TimelineContent, TimelineSeparator, TimelineConnector } from '@mui/lab';
 // utils
 import { fDateTime } from '../../../utils/formatTime';
 
-// ----------------------------------------------------------------------
+interface AppOrderTimelineProps {
+  title?: string
+  subheader?: string
+  list: unknown[]
+}
 
-AppOrderTimeline.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  list: PropTypes.array.isRequired,
-};
-
-export default function AppOrderTimeline({ title, subheader, list, ...other }) {
+export default function AppOrderTimeline({
+  title,
+  subheader,
+  list,
+  ...other
+}: AppOrderTimelineProps) {
   return (
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
@@ -35,18 +36,19 @@ export default function AppOrderTimeline({ title, subheader, list, ...other }) {
   );
 }
 
-// ----------------------------------------------------------------------
+interface OrderItemProps {
+  isLast?: boolean
+  item?: {
+    time?: Date
+    title?: string
+    type?: string
+  }
+}
 
-OrderItem.propTypes = {
-  isLast: PropTypes.bool,
-  item: PropTypes.shape({
-    time: PropTypes.instanceOf(Date),
-    title: PropTypes.string,
-    type: PropTypes.string,
-  }),
-};
-
-function OrderItem({ item, isLast }) {
+function OrderItem({
+  item,
+  isLast
+}: OrderItemProps) {
   const { type, title, time } = item;
   return (
     <TimelineItem>

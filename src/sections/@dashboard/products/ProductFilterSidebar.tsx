@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // @mui
 import {
   Box,
@@ -47,15 +46,17 @@ export const FILTER_COLOR_OPTIONS = [
   '#FFC107',
 ];
 
-// ----------------------------------------------------------------------
+interface ShopFilterSidebarProps {
+  openFilter?: boolean
+  onOpenFilter?(...args: unknown[]): unknown
+  onCloseFilter?(...args: unknown[]): unknown
+}
 
-ShopFilterSidebar.propTypes = {
-  openFilter: PropTypes.bool,
-  onOpenFilter: PropTypes.func,
-  onCloseFilter: PropTypes.func,
-};
-
-export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFilter }) {
+export default function ShopFilterSidebar({
+  openFilter,
+  onOpenFilter,
+  onCloseFilter
+}: ShopFilterSidebarProps) {
   return (
     <>
       <Button disableRipple color="inherit" endIcon={<Iconify icon="ic:round-filter-list" />} onClick={onOpenFilter}>

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 // @mui
 import { Radio, RadioGroup } from '@mui/material';
@@ -29,9 +28,5 @@ const ColorSinglePicker = forwardRef(({ colors, ...other }, ref) => (
     })}
   </RadioGroup>
 ));
-
-ColorSinglePicker.propTypes = {
-  colors: PropTypes.arrayOf(PropTypes.string),
-};
 
 export default ColorSinglePicker;

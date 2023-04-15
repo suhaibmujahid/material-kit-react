@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
@@ -84,10 +83,5 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
     </Link>
   );
 });
-
-Logo.propTypes = {
-  sx: PropTypes.object,
-  disabledLink: PropTypes.bool,
-};
 
 export default Logo;

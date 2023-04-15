@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 // form
 import { useForm, Controller } from 'react-hook-form';
@@ -17,15 +16,18 @@ import {
 // components
 import Iconify from '../../../components/iconify';
 
-// ----------------------------------------------------------------------
+interface AppTasksProps {
+  title?: string
+  subheader?: string
+  list: unknown[]
+}
 
-AppTasks.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  list: PropTypes.array.isRequired,
-};
-
-export default function AppTasks({ title, subheader, list, ...other }) {
+export default function AppTasks({
+  title,
+  subheader,
+  list,
+  ...other
+}: AppTasksProps) {
   const { control } = useForm({
     defaultValues: {
       taskCompleted: ['2'],
@@ -60,18 +62,20 @@ export default function AppTasks({ title, subheader, list, ...other }) {
   );
 }
 
-// ----------------------------------------------------------------------
+interface TaskItemProps {
+  checked?: boolean
+  onChange?(...args: unknown[]): unknown
+  task?: {
+    id?: string
+    label?: string
+  }
+}
 
-TaskItem.propTypes = {
-  checked: PropTypes.bool,
-  onChange: PropTypes.func,
-  task: PropTypes.shape({
-    id: PropTypes.string,
-    label: PropTypes.string,
-  }),
-};
-
-function TaskItem({ task, checked, onChange }) {
+function TaskItem({
+  task,
+  checked,
+  onChange
+}: TaskItemProps) {
   const [open, setOpen] = useState(null);
 
   const handleOpenMenu = (event) => {

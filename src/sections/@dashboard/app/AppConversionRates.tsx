@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import ReactApexChart from 'react-apexcharts';
 // @mui
 import { Box, Card, CardHeader } from '@mui/material';
@@ -7,15 +6,18 @@ import { fNumber } from '../../../utils/formatNumber';
 // components
 import { useChart } from '../../../components/chart';
 
-// ----------------------------------------------------------------------
+interface AppConversionRatesProps {
+  title?: string
+  subheader?: string
+  chartData: unknown[]
+}
 
-AppConversionRates.propTypes = {
-  title: PropTypes.string,
-  subheader: PropTypes.string,
-  chartData: PropTypes.array.isRequired,
-};
-
-export default function AppConversionRates({ title, subheader, chartData, ...other }) {
+export default function AppConversionRates({
+  title,
+  subheader,
+  chartData,
+  ...other
+}: AppConversionRatesProps) {
   const chartLabels = chartData.map((i) => i.label);
 
   const chartSeries = chartData.map((i) => i.value);
